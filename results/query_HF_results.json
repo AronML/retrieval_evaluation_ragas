@@ -1,0 +1,437 @@
+[
+    [
+        {
+            "page_content": " \n    from ibm_watsonx_ai import APIClient  \n      \n    api_client = APIClient(...)  \n      \n    watsonx_llm = WatsonxLLM(  \n        model_id=\"ibm/granite-13b-instruct-v2\",  \n        watsonx_client=api_client,  \n    )  \n    \n\nYou can also pass the IBM's `ModelInference` object into the `WatsonxLLM`\nclass.\n\n    \n    \n    from ibm_watsonx_ai.foundation_models import ModelInference  \n      \n  ",
+            "metadata": {
+                "description": "WatsonxLLM is a wrapper for IBM watsonx.ai foundation models.",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/llms/ibm_watsonx/",
+                "title": "IBM watsonx.ai | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        },
+        {
+            "page_content": "|---|---|---|---  \n\u2705| \u2705| \u274c| \u274c| \u274c| \u274c| \u2705| \u274c| \u2705| \u274c  \n  \n## Setup\u200b\n\nTo access IBM watsonx.ai models you'll need to create an IBM watsonx.ai\naccount, get an API key, and install the `langchain-ibm` integration package.\n\n### Credentials\u200b\n\nThe cell below defines the credentials required to work with watsonx\nFoundation Model inferencing.\n\n**Action:** Provide the IBM Cloud user API key. For details, see Managing user\nAPI keys.\n\n    \n    \n    import os  \n    from getpass import getpass  \n      \n    watsonx_api_key = getpass() ",
+            "metadata": {
+                "description": "ChatWatsonx is a wrapper for IBM watsonx.ai foundation models.",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/chat/ibm_watsonx/",
+                "title": "ChatWatsonx | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        },
+        {
+            "page_content": "# IBM watsonx.ai\n\n> WatsonxLLM is a wrapper for IBM watsonx.ai foundation models.\n\nThis example shows how to communicate with `watsonx.ai` models using\n`LangChain`.\n\n## Setting up\u200b\n\nInstall the package `langchain-ibm`.\n\n    \n    \n    !pip install -qU langchain-ibm  \n    \n\nThis cell defines the WML credentials required to work with watsonx Foundation\nModel inferencing.\n\n**Action:** Provide the IBM Cloud user API key. For details, see\ndocumentation.\n\n    \n    \n    import os  \n    from getpass import getpass  \n      \n    watsonx_api_key = getpass() ",
+            "metadata": {
+                "description": "WatsonxLLM is a wrapper for IBM watsonx.ai foundation models.",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/llms/ibm_watsonx/",
+                "title": "IBM watsonx.ai | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        }
+    ],
+    [
+        {
+            "page_content": "# SearchApi\n\nThis page covers how to use the SearchApi Google Search API within LangChain.\nSearchApi is a real-time SERP API for easy SERP scraping.\n\n## Setup\u200b\n\n  * Go to https://www.searchapi.io/ to sign up for a free account\n  * Get the api key and set it as an environment variable (`SEARCHAPI_API_KEY`)\n\n## Wrappers\u200b\n\n### Utility\u200b\n\nThere is a SearchApiAPIWrapper utility which wraps this API. To import this\nutility:\n\n    \n    \n    from langchain_community.utilities import SearchApiAPIWrapper  \n    \n\n**API Reference:**SearchApiAPIWrapper\n\nYou can use it as part of a Self Ask chain:\n\n    \n    ",
+            "metadata": {
+                "description": "This page covers how to use the SearchApi Google Search API within LangChain. SearchApi is a real-time SERP API for easy SERP scraping.",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/providers/searchapi/",
+                "title": "SearchApi | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        },
+        {
+            "page_content": "   from langchain_core.tools import Tool  \n    from langchain_openai import OpenAI  \n      \n    llm = OpenAI(temperature=0)  \n    search = GoogleSerperAPIWrapper()  \n    tools = [  \n        Tool(  \n            name=\"Intermediate Answer\",  \n            func=search.run,  \n            description=\"useful for when you need to ask with search\",  \n        )  \n    ]  \n      \n    self_ask_with_search = initialize_agent(  \n ",
+            "metadata": {
+                "description": "This notebook goes over how to use the Google Serper component to search the web. First you need to sign up for a free account at serper.dev and get your api key.",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/tools/google_serper/",
+                "title": "Google Serper | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        },
+        {
+            "page_content": "searcher (such as search via embeddings).\n\n    \n    \n    from langchain_community.retrievers import BM25Retriever  \n      \n    retriever = BM25Retriever.from_documents(texts)  \n    \n\n**API Reference:**BM25Retriever\n\n#### Combining Search System + LLM\u200b\n\nNow that we have our searcher, we just need to implement a prompt specifying\nthe task and invoke the chain.\n\n    \n    \n    from langchain.chains.question_answering import load_qa_chain  \n      \n    prompt = \"\"\"Baseado nos seguintes documentos, responda a pergunta abaixo.  \n  ",
+            "metadata": {
+                "description": "Introduction",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/chat/maritalk/",
+                "title": "maritalk | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        }
+    ],
+    [
+        {
+            "page_content": "# Wikipedia\n\n> Wikipedia is a multilingual free online encyclopedia written and maintained\n> by a community of volunteers, known as Wikipedians, through open\n> collaboration and using a wiki-based editing system called MediaWiki.\n> `Wikipedia` is the largest and most-read reference work in history.\n\nThis notebook shows how to load wiki pages from `wikipedia.org` into the\nDocument format that we use downstream.\n\n## Installation\u200b\n\nFirst, you need to install `wikipedia` python package.\n\n    \n    \n    %pip install --upgrade --quiet  wikipedia  \n    \n\n## Examples\u200b\n\n`WikipediaLoader` has these arguments:\n\n  * `query`: free text which used to find documents in Wikipedia\n  * optional `lang`: default=\"en\". Use it to search in a specific language part of Wikipedia\n  * optional",
+            "metadata": {
+                "description": "Wikipedia is a multilingual free online encyclopedia written and maintained by a community of volunteers, known as Wikipedians, through open collaboration and using a wiki-based editing system called MediaWiki. Wikipedia is the largest and most-read reference work in history.",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/document_loaders/wikipedia/",
+                "title": "Wikipedia | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        },
+        {
+            "page_content": "# Wikipedia\n\n> Wikipedia is a multilingual free online encyclopedia written and maintained\n> by a community of volunteers, known as Wikipedians, through open\n> collaboration and using a wiki-based editing system called MediaWiki.\n> `Wikipedia` is the largest and most-read reference work in history.\n\n## Installation and Setup\u200b\n\n    \n    \n    pip install wikipedia  \n    \n\n## Document Loader\u200b\n\nSee a usage example.\n\n    \n    \n    from langchain_community.document_loaders import WikipediaLoader  \n    \n\n**API Reference:**WikipediaLoader\n\n## Retriever\u200b\n\nSee a usage example.\n\n    \n    \n    from langchain.retrievers import WikipediaRetriever  \n    ",
+            "metadata": {
+                "description": "Wikipedia is a multilingual free online encyclopedia written and maintained by a community of volunteers, known as Wikipedians, through open collaboration and using a wiki-based editing system called MediaWiki. Wikipedia is the largest and most-read reference work in history.",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/providers/wikipedia/",
+                "title": "Wikipedia | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        },
+        {
+            "page_content": "_url=\"http://localhost:5010/api/parseDocument?renderFormat=all\",  \n    )  \n    docs = loader.load()  \n    \n\n**API Reference:**LLMSherpaFileLoader\n\n    \n    \n    docs[0].page_content[:400]  \n    \n    \n    \n    '<html><h1>Assisting in Writing Wikipedia-like Articles From Scratch with Large Language Models</h1><table><th><td colSpan=1>Yijia Shao</td><td colSpan=1>Yucheng Jiang</td><td colSpan=1>Theodore A. Kanell</td><td colSpan=1>Peter Xu</td></th><tr><td colSpan",
+            "metadata": {
+                "description": "This notebook covers how to use LLM Sherpa to load files of many types. LLM Sherpa supports different file formats including DOCX, PPTX, HTML, TXT, and XML.",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/document_loaders/llmsherpa/",
+                "title": "LLM Sherpa | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        }
+    ],
+    [
+        {
+            "page_content": " \n    from langchain_community.utilities.wolfram_alpha import WolframAlphaAPIWrapper  \n    \n\n**API Reference:**WolframAlphaAPIWrapper\n\nFor a more detailed walkthrough of this wrapper, see this notebook.\n\n### Tool\u200b\n\nYou can also easily load this wrapper as a Tool (to use with an Agent). You\ncan do this with:\n\n    \n    \n    from langchain.agents import load_tools  \n    tools = load_tools([\"wolfram-alpha\"])  \n    \n\n**API Reference:**load_tools\n\nFor more information on tools, see this page.",
+            "metadata": {
+                "description": "WolframAlpha is an answer engine developed by Wolfram Research.",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/providers/wolfram_alpha/",
+                "title": "Wolfram Alpha | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        },
+        {
+            "page_content": "# Wolfram Alpha\n\nThis notebook goes over how to use the wolfram alpha component.\n\nFirst, you need to set up your Wolfram Alpha developer account and get your\nAPP ID:\n\n  1. Go to wolfram alpha and sign up for a developer account here\n  2. Create an app and get your APP ID\n  3. pip install wolframalpha\n\nThen we will need to set some environment variables:\n\n  1. Save your APP ID into WOLFRAM_ALPHA_APPID env variable\n\n    \n    \n    pip install wolframalpha  \n    \n    \n    \n    import os  \n      \n    os.environ[\"WOLFRAM_ALPHA_APPID\"] = \"\"  \n    \n    \n",
+            "metadata": {
+                "description": "This notebook goes over how to use the wolfram alpha component.",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/tools/wolfram_alpha/",
+                "title": "Wolfram Alpha | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        },
+        {
+            "page_content": "    \n    \n    \n    from langchain_community.utilities.wolfram_alpha import WolframAlphaAPIWrapper  \n    \n\n**API Reference:**WolframAlphaAPIWrapper\n\n    \n    \n    wolfram = WolframAlphaAPIWrapper()  \n    \n    \n    \n    wolfram.run(\"What is 2x+5 = -3x + 7?\")  \n    \n    \n    \n    'x = 2/5'  \n    \n\n## Related\u200b\n\n  * Tool conceptual guide\n  * Tool how-to guides",
+            "metadata": {
+                "description": "This notebook goes over how to use the wolfram alpha component.",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/tools/wolfram_alpha/",
+                "title": "Wolfram Alpha | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        }
+    ],
+    [
+        {
+            "page_content": "       with Scotiabank's Student GIC\\n                       Program. We're here to help you tur\u2026\\n\\n\\n                       startright.scotiabank.com         Learn More\\n\\n\\n                            Add a Comment\\n\\n\\nSort by:   Best\\n\\n\\n      DinosParkour      \u2022 1y ago\\n\\n\\n     Dense Retrieval (DR) m\"}]}, id='run-c4b06b98",
+            "metadata": {
+                "description": "PremAI is an all-in-one platform that simplifies the creation of robust, production-ready applications powered by Generative AI. By streamlining the development process, PremAI allows you to concentrate on enhancing user experience and driving overall growth for your application. You can quickly start using our platform here.",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/chat/premai/",
+                "title": "ChatPremAI | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        },
+        {
+            "page_content": "                 startright.scotiabank.com         Learn More\\n\\n\\n                            Add a Comment\\n\\n\\nSort by:   Best\\n\\n\\n      DinosParkour      \u2022 1y ago\\n\\n\\n     Dense Retrieval (DR) m\"}]}, id='run-510bbd0e-3f8f-4095-9b1f-c2d29fd89719-0')  \n    \n\nYou can provide system prompt here like this:\n\n    \n    \n    chat.invoke([system",
+            "metadata": {
+                "description": "PremAI is an all-in-one platform that simplifies the creation of robust, production-ready applications powered by Generative AI. By streamlining the development process, PremAI allows you to concentrate on enhancing user experience and driving overall growth for your application. You can quickly start using our platform here.",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/chat/premai/",
+                "title": "ChatPremAI | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        },
+        {
+            "page_content": "00ee\\u2665  \n    This is ethernet  \n    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.  \n    This is an empty case  \n    Lorem ipsum dolor sit",
+            "metadata": {
+                "description": "A visio file (with extension .vsdx) is associated with Microsoft Visio, a diagram creation software. It stores information about the structure, layout, and graphical elements of a diagram. This format facilitates the creation and sharing of visualizations in areas such as business, engineering, and computer science.",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/document_loaders/vsdx/",
+                "title": "Vsdx | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        }
+    ],
+    [
+        {
+            "page_content": "# Petals\n\nThis page covers how to use the Petals ecosystem within LangChain. It is\nbroken into two parts: installation and setup, and then references to specific\nPetals wrappers.\n\n## Installation and Setup\u200b\n\n  * Install with `pip install petals`\n  * Get a Hugging Face api key and set it as an environment variable (`HUGGINGFACE_API_KEY`)\n\n## Wrappers\u200b\n\n### LLM\u200b\n\nThere exists an Petals LLM wrapper, which you can access with\n\n    \n    \n    from langchain_community.llms import Petals  \n    \n\n**API Reference:**Petals",
+            "metadata": {
+                "description": "This page covers how to use the Petals ecosystem within LangChain.",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/providers/petals/",
+                "title": "Petals | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        },
+        {
+            "page_content": "ging Face models can be run locally through the `HuggingFacePipeline`\nclass.\n\nSee a usage example.\n\n    \n    \n    from langchain_huggingface import HuggingFacePipeline  \n    \n\n**API Reference:**HuggingFacePipeline\n\n## Embedding Models\u200b\n\n### HuggingFaceEmbeddings\u200b\n\nSee a usage example.\n\n    \n    \n    from langchain_huggingface import HuggingFaceEmbeddings  \n    \n\n**API Reference:**HuggingFaceEmbeddings\n\n### HuggingFaceInstructEmbeddings\u200b\n\nSee a usage example.\n\n    \n    \n    from langchain_community.embeddings import HuggingFaceInstructEmbeddings ",
+            "metadata": {
+                "description": "All functionality related to the Hugging Face Platform.",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/platforms/huggingface/",
+                "title": "Hugging Face | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        },
+        {
+            "page_content": " langchain.chains import LLMChain  \n    from langchain_community.llms import Petals  \n    from langchain_core.prompts import PromptTemplate  \n    \n\n**API Reference:**LLMChain | Petals | PromptTemplate\n\n## Set the Environment API Key\u200b\n\nMake sure to get your API key from Huggingface.\n\n    \n    \n    from getpass import getpass  \n      \n    HUGGINGFACE_API_KEY = getpass()  \n    \n    \n    \n     \u00b7\u00b7\u00b7\u00b7\u00b7\u00b7\u00b7\u00b7  \n    \n    \n    \n    os.environ[\"HUGGINGFACE_API_KEY\"] = H",
+            "metadata": {
+                "description": "Petals runs 100B+ language models at home, BitTorrent-style.",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/llms/petals/",
+                "title": "Petals | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        }
+    ],
+    [
+        {
+            "page_content": "# ElevenLabs\n\n> ElevenLabs is a voice AI research & deployment company with a mission to\n> make content universally accessible in any language & voice.\n>\n> `ElevenLabs` creates the most realistic, versatile and contextually-aware AI\n> audio, providing the ability to generate speech in hundreds of new and\n> existing voices in 29 languages.\n\n## Installation and Setup\u200b\n\nFirst, you need to set up an ElevenLabs account. You can follow the\ninstructions here.\n\nInstall the Python package:\n\n    \n    \n    pip install elevenlabs  \n    \n\n## Tools\u200b\n\nSee a usage example.\n\n    \n    \n    from langchain_community.tools import ElevenLabsText2SpeechTool  \n    \n\n**API Reference:**",
+            "metadata": {
+                "description": "ElevenLabs is a voice AI research & deployment company",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/providers/elevenlabs/",
+                "title": "ElevenLabs | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        },
+        {
+            "page_content": "ech\u200b\n\n> Google Cloud Text-to-Speech is a Google Cloud service that enables\n> developers to synthesize natural-sounding speech with 100+ voices, available\n> in multiple languages and variants. It applies DeepMind\u2019s groundbreaking\n> research in WaveNet and Google\u2019s powerful neural networks to deliver the\n> highest fidelity possible.\n\nWe need to install a python package.\n\n    \n    \n    pip install google-cloud-text-to-speech  \n    \n\nSee a usage example and authorization instructions.\n\n    \n    \n    from langchain_google_community import TextToSpeechTool  \n    \n\n### Google Drive\u200b\n\nWe need to install several python packages.\n\n    \n    \n    pip install google-api-python-client",
+            "metadata": {
+                "description": "All functionality related to Google Cloud Platform and other Google products.",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/platforms/google/",
+                "title": "Google | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        },
+        {
+            "page_content": "# AssemblyAI\n\n> AssemblyAI builds `Speech AI` models for tasks like speech-to-text, speaker\n> diarization, speech summarization, and more. `AssemblyAI\u2019s` Speech AI models\n> include accurate speech-to-text for voice data (such as calls, virtual\n> meetings, and podcasts), speaker detection, sentiment analysis, chapter\n> detection, PII redaction.\n\n## Installation and Setup\u200b\n\nGet your API key.\n\nInstall the `assemblyai` package.\n\n    \n    \n    pip install -U assemblyai  \n    \n\n## Document Loader\u200b\n\n### AssemblyAI Audio Transcript\u200b\n\nThe `AssemblyAIAudioTranscriptLoader` transcribes audio files with the\n`AssemblyAI API` and loads the transcribed text into documents.\n\nSee a usage example.\n\n   ",
+            "metadata": {
+                "description": "AssemblyAI builds Speech AI models for tasks like",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/providers/assemblyai/",
+                "title": "AssemblyAI | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        }
+    ],
+    [
+        {
+            "page_content": "# Serper - Google Search API\n\nThis page covers how to use the Serper Google Search API within LangChain.\nSerper is a low-cost Google Search API that can be used to add answer box,\nknowledge graph, and organic results data from Google Search. It is broken\ninto two parts: setup, and then references to the specific Google Serper\nwrapper.\n\n## Setup\u200b\n\n  * Go to serper.dev to sign up for a free account\n  * Get the api key and set it as an environment variable (`SERPER_API_KEY`)\n\n## Wrappers\u200b\n\n### Utility\u200b\n\nThere exists a GoogleSerperAPIWrapper utility which wraps this API. To import\nthis utility:\n\n    \n    \n    from langchain_community.utilities import GoogleSerperAPIWrapper  \n    \n\n**API Reference:",
+            "metadata": {
+                "description": "This page covers how to use the Serper Google Search API within LangChain. Serper is a low-cost Google Search API that can be used to add answer box, knowledge graph, and organic results data from Google Search.",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/providers/google_serper/",
+                "title": "Serper - Google Search API | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        },
+        {
+            "page_content": "# Google Serper\n\nThis notebook goes over how to use the `Google Serper` component to search the\nweb. First you need to sign up for a free account at serper.dev and get your\napi key.\n\n    \n    \n    %pip install --upgrade --quiet  langchain-community  \n    \n    \n    \n    import os  \n    import pprint  \n      \n    os.environ[\"SERPER_API_KEY\"] = \"\"  \n    \n    \n    \n    from langchain_community.utilities import GoogleSerperAPIWrapper  \n    \n\n**API Reference:**GoogleSerperAPIWrapper\n\n    \n   ",
+            "metadata": {
+                "description": "This notebook goes over how to use the Google Serper component to search the web. First you need to sign up for a free account at serper.dev and get your api key.",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/tools/google_serper/",
+                "title": "Google Serper | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        },
+        {
+            "page_content": "# SearchApi\n\nThis page covers how to use the SearchApi Google Search API within LangChain.\nSearchApi is a real-time SERP API for easy SERP scraping.\n\n## Setup\u200b\n\n  * Go to https://www.searchapi.io/ to sign up for a free account\n  * Get the api key and set it as an environment variable (`SEARCHAPI_API_KEY`)\n\n## Wrappers\u200b\n\n### Utility\u200b\n\nThere is a SearchApiAPIWrapper utility which wraps this API. To import this\nutility:\n\n    \n    \n    from langchain_community.utilities import SearchApiAPIWrapper  \n    \n\n**API Reference:**SearchApiAPIWrapper\n\nYou can use it as part of a Self Ask chain:\n\n    \n    ",
+            "metadata": {
+                "description": "This page covers how to use the SearchApi Google Search API within LangChain. SearchApi is a real-time SERP API for easy SERP scraping.",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/providers/searchapi/",
+                "title": "SearchApi | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        }
+    ],
+    [
+        {
+            "page_content": "# Groq\n\nWelcome to Groq! \ud83d\ude80 At Groq, we've developed the world's first Language\nProcessing Unit\u2122, or LPU. The Groq LPU has a deterministic, single core\nstreaming architecture that sets the standard for GenAI inference speed with\npredictable and repeatable performance for any given workload.\n\nBeyond the architecture, our software is designed to empower developers like\nyou with the tools you need to create innovative, powerful AI applications.\nWith Groq as your engine, you can:\n\n  * Achieve uncompromised low latency and performance for real-time AI and HPC inferences \ud83d\udd25\n  * Know the exact performance and compute time for any given workload \ud83d\udd2e\n  * Take advantage of our cutting-edge technology to stay ahead of the competition \ud83d\udcaa\n\nWant more Groq? Check out our website for more resources and join our Discord\ncommunity to connect with our developers",
+            "metadata": {
+                "description": "Welcome to Groq! \ud83d\ude80 At Groq, we've developed the world's first Language Processing Unit\u2122, or LPU. The Groq LPU has a deterministic, single core streaming architecture that sets the standard for GenAI inference speed with predictable and repeatable performance for any given workload.",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/providers/groq/",
+                "title": "Groq | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        },
+        {
+            "page_content": " \n\u2705| \u2705| \u2705| \u274c| \u274c| \u274c| \u2705| \u2705| \u2705| \u2705  \n  \n## Setup\u200b\n\nTo access Groq models you'll need to create a Groq account, get an API key,\nand install the `langchain-groq` integration package.\n\n### Credentials\u200b\n\nHead to the Groq console to sign up to Groq and generate an API key. Once\nyou've done this set the GROQ_API_KEY environment variable:\n\n    \n    \n    import getpass  \n    import os  \n      \n    os.environ[\"GROQ_API_KEY\"] = getpass.getpass(\"Enter your Groq API key: \")  \n    \n\nIf you want",
+            "metadata": {
+                "description": "This will help you getting started with Groq chat models. For detailed documentation of all ChatGroq features and configurations head to the API reference. For a list of all Groq models, visit this link.",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/chat/groq/",
+                "title": "ChatGroq | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        },
+        {
+            "page_content": " join our Discord\ncommunity to connect with our developers!\n\n## Installation and Setup\u200b\n\nInstall the integration package:\n\n    \n    \n    pip install langchain-groq  \n    \n\nRequest an API key and set it as an environment variable:\n\n    \n    \n    export GROQ_API_KEY=gsk_...  \n    \n\n## Chat Model\u200b\n\nSee a usage example.",
+            "metadata": {
+                "description": "Welcome to Groq! \ud83d\ude80 At Groq, we've developed the world's first Language Processing Unit\u2122, or LPU. The Groq LPU has a deterministic, single core streaming architecture that sets the standard for GenAI inference speed with predictable and repeatable performance for any given workload.",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/providers/groq/",
+                "title": "Groq | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        }
+    ],
+    [
+        {
+            "page_content": "  from langchain_community.embeddings import LlamaCppEmbeddings  \n    \n\n**API Reference:**LlamaCppEmbeddings",
+            "metadata": {
+                "description": "llama.cpp python library is a simple Python bindings for @ggerganov",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/providers/llamacpp/",
+                "title": "Llama.cpp | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        },
+        {
+            "page_content": " llama-cpp-python  \n    \n    \n    \n    from langchain_community.embeddings import LlamaCppEmbeddings  \n    \n\n**API Reference:**LlamaCppEmbeddings\n\n    \n    \n    llama = LlamaCppEmbeddings(model_path=\"/path/to/model/ggml-model-q4_0.bin\")  \n    \n    \n    \n    text = \"This is a test document.\"  \n    \n    \n    \n    query_result = llama.embed_query(text)  \n    \n    \n    \n    doc_",
+            "metadata": {
+                "description": "llama.cpp python library is a simple Python bindings for @ggerganov",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/text_embedding/llamacpp/",
+                "title": "Llama.cpp | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        },
+        {
+            "page_content": "    pip install llama-cpp-python  \n    \n\n  * Download one of the supported models and convert them to the llama.cpp format per the instructions\n\n## Chat models\u200b\n\nSee a usage example.\n\n    \n    \n    from langchain_community.chat_models import ChatLlamaCpp  \n    \n\n**API Reference:**ChatLlamaCpp\n\n## LLMs\u200b\n\nSee a usage example.\n\n    \n    \n    from langchain_community.llms import LlamaCpp  \n    \n\n**API Reference:**LlamaCpp\n\n## Embedding models\u200b\n\nSee a usage example.\n\n    \n    \n    from langchain_community.embeddings",
+            "metadata": {
+                "description": "llama.cpp python library is a simple Python bindings for @ggerganov",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/providers/llamacpp/",
+                "title": "Llama.cpp | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        }
+    ],
+    [
+        {
+            "page_content": ".graph_qa.neptune_cypher import NeptuneOpenCypherQAChain  \n    \n\n**API Reference:**NeptuneGraph | NeptuneAnalyticsGraph | NeptuneOpenCypherQAChain\n\n### Amazon Neptune with SPARQL\u200b\n\nSee a usage example.\n\n    \n    \n    from langchain_community.graphs import NeptuneRdfGraph  \n    from langchain_community.chains.graph_qa.neptune_sparql import NeptuneSparqlQAChain  \n    \n\n**API Reference:**NeptuneRdfGraph | NeptuneSparqlQAChain\n\n## Callbacks\u200b\n\n### SageMaker Tracking\u200b\n\n> Amazon SageMaker is a fully managed service that is used to quickly and\n> easily build, train and deploy machine learning (ML)",
+            "metadata": {
+                "description": "The LangChain integrations related to Amazon AWS platform.",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/platforms/aws/",
+                "title": "AWS | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        },
+        {
+            "page_content": "  \n    \n\nSee a usage example.\n\n    \n    \n    from langchain_community.agent_toolkits import PlayWrightBrowserToolkit  \n    \n\n**API Reference:**PlayWrightBrowserToolkit\n\n## Graphs\u200b\n\n### Azure Cosmos DB for Apache Gremlin\u200b\n\nWe need to install a python package.\n\n    \n    \n    pip install gremlinpython  \n    \n\nSee a usage example.\n\n    \n    \n    from langchain_community.graphs import GremlinGraph  \n    from langchain_community.graphs.graph_document import GraphDocument, Node, Relationship  \n    \n\n**API Reference:**GremlinGraph | GraphDocument | Node |",
+            "metadata": {
+                "description": "All functionality related to Microsoft Azure and other Microsoft products.",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/platforms/microsoft/",
+                "title": "Microsoft | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        },
+        {
+            "page_content": "# Neo4j\n\n> What is `Neo4j`?\n\n>   * Neo4j is an `open-source database management system` that specializes in\n> graph database technology.\n>   * Neo4j allows you to represent and store data in nodes and edges, making\n> it ideal for handling connected data and relationships.\n>   * Neo4j provides a `Cypher Query Language`, making it easy to interact\n> with and query your graph data.\n>   * With Neo4j, you can achieve high-performance `graph traversals and\n> queries`, suitable for production-level systems.\n>\n\n> Get started with Neo4j by visiting their website.\n\n## Installation and Setup\u200b\n\n  * Install the Python SDK with `pip install neo4j`\n\n## VectorStore\u200b\n\nThe Neo4j vector index is used as a vectorstore, whether",
+            "metadata": {
+                "description": "What is Neo4j?",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/providers/neo4j/",
+                "title": "Neo4j | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        }
+    ],
+    [
+        {
+            "page_content": "QAChain\n\nSee a usage example\n\n## Constructing a knowledge graph from text\u200b\n\nText data often contain rich relationships and insights that can be useful for\nvarious analytics, recommendation engines, or knowledge management\napplications. Diffbot's NLP API allows for the extraction of entities,\nrelationships, and semantic meaning from unstructured text data. By coupling\nDiffbot's NLP API with Neo4j, a graph database, you can create powerful,\ndynamic graph structures based on the information extracted from text. These\ngraph structures are fully queryable and can be integrated into various\napplications.\n\n    \n    \n    from langchain_community.graphs import Neo4jGraph  \n    from langchain_experimental.graph_transformers.diffbot import DiffbotGraphTransformer  \n    \n\n**API Reference:**",
+            "metadata": {
+                "description": "What is Neo4j?",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/providers/neo4j/",
+                "title": "Neo4j | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        },
+        {
+            "page_content": "# Ontotext GraphDB\n\n> Ontotext GraphDB is a graph database and knowledge discovery tool compliant\n> with RDF and SPARQL.\n\n## Dependencies\u200b\n\nInstall the rdflib package with\n\n    \n    \n    pip install rdflib==7.0.0  \n    \n\n## Graph QA Chain\u200b\n\nConnect your GraphDB Database with a chat model to get insights on your data.\n\nSee the notebook example here.\n\n    \n    \n    from langchain_community.graphs import OntotextGraphDBGraph  \n    from langchain.chains import OntotextGraphDBQAChain  \n    \n\n**API Reference:**OntotextGraphDBGraph | OntotextGraphDBQAChain",
+            "metadata": {
+                "description": "Ontotext GraphDB is a graph database and knowledge discovery tool compliant with RDF and SPARQL.",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/providers/ontotext_graphdb/",
+                "title": "Ontotext GraphDB | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        },
+        {
+            "page_content": " diffbot_nlp = DiffbotGraphTransformer(  \n        diffbot_api_key=os.environ.get(\"DIFFBOT_API_TOKEN\")  \n    )  \n    graph_documents = diffbot_nlp.convert_to_graph_documents(loader.load())  \n    \n\n**API Reference:**DiffbotGraphTransformer\n\nTo continue loading the data into a Knowledge Graph, follow the\n`DiffbotGraphTransformer` guide.\n\n## Related\u200b\n\n  * Document loader conceptual guide\n  * Document loader how-to guides",
+            "metadata": {
+                "description": "Diffbot is a suite of ML-based products that make it easy to structure web data.",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/document_loaders/diffbot/",
+                "title": "Diffbot | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        }
+    ],
+    [
+        {
+            "page_content": "    collection_name=\"example_collection\",  \n        embedding_function=embeddings,  \n        persist_directory=\"./chroma_langchain_db\",  # Where to save data locally, remove if not neccesary  \n    )  \n    \n\n### Initialization from client\u200b\n\nYou can also initialize from a `Chroma` client, which is particularly useful\nif you want easier access to the underlying database.\n\n    \n    \n    import chromadb  \n      \n    persistent_client = chromadb.PersistentClient()  \n    collection = persistent_client.get_or_create_collection(\"collection_name\")  \n    collection.add(ids=[\"",
+            "metadata": {
+                "description": "This notebook covers how to get started with the Chroma vector store.",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/vectorstores/chroma/",
+                "title": "Chroma | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        },
+        {
+            "page_content": "# Chroma\n\nThis notebook covers how to get started with the `Chroma` vector store.\n\n> Chroma is a AI-native open-source vector database focused on developer\n> productivity and happiness. Chroma is licensed under Apache 2.0. View the\n> full docs of `Chroma` at this page, and find the API reference for the\n> LangChain integration at this page.\n\n## Setup\u200b\n\nTo access `Chroma` vector stores you'll need to install the `langchain-chroma`\nintegration package.\n\n    \n    \n    pip install -qU \"langchain-chroma>=0.1.2\"  \n    \n\n### Credentials\u200b\n\nYou can use the `Chroma` vector store without any credentials, simply\ninstalling the package above is enough!\n\nIf you want to get best",
+            "metadata": {
+                "description": "This notebook covers how to get started with the Chroma vector store.",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/vectorstores/chroma/",
+                "title": "Chroma | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        },
+        {
+            "page_content": " \n      \n    embeddings = HuggingFaceEmbeddings(model=\"sentence-transformers/all-mpnet-base-v2\")  \n    \n    \n    \n    pip install -qU langchain-core  \n    \n    \n    \n    from langchain_core.embeddings import FakeEmbeddings  \n      \n    embeddings = FakeEmbeddings(size=4096)  \n    \n    \n    \n    from langchain_chroma import Chroma  \n      \n    vector_store = Chroma(  \n        collection_name=\"example_collection",
+            "metadata": {
+                "description": "This notebook covers how to get started with the Chroma vector store.",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/vectorstores/chroma/",
+                "title": "Chroma | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        }
+    ],
+    [
+        {
+            "page_content": "# Alchemy\n\n> Alchemy is the platform to build blockchain applications.\n\n## Installation and Setup\u200b\n\nCheck out the installation guide.\n\n## Document loader\u200b\n\n### BlockchainLoader on the Alchemy platform\u200b\n\nSee a usage example.\n\n    \n    \n    from langchain_community.document_loaders.blockchain import (  \n        BlockchainDocumentLoader,  \n        BlockchainType,  \n    )  \n    \n\n**API Reference:**BlockchainDocumentLoader | BlockchainType",
+            "metadata": {
+                "description": "Alchemy is the platform to build blockchain applications.",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/providers/alchemy/",
+                "title": "Alchemy | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        },
+        {
+            "page_content": "92f7381b9f03921564a437210bb9396471050c', 'blockchain': 'eth-mainnet', 'tokenId': '0x15'})\n\n## Load NFTs into Document Loader\u200b\n\n    \n    \n    # get ALCHEMY_API_KEY from https://www.alchemy.com/  \n      \n    alchemyApiKey = \"...\"  \n    \n\n### Option 1: Ethereum Mainnet (default BlockchainType)\u200b\n\n    \n    \n    from langchain_community.document_loaders.blockchain import (  \n        BlockchainDocumentLoader,  \n        BlockchainType,  \n    )  \n   ",
+            "metadata": {
+                "description": "Overview",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/document_loaders/blockchain/",
+                "title": "Blockchain | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        },
+        {
+            "page_content": " \n    \n    import sqlalchemy  \n    from langchain.globals import set_llm_cache  \n    eng = sqlalchemy.create_engine(conn_str)  \n    set_llm_cache(SQLAlchemyCache(engine=eng))  \n    \n\nFrom here, see the LLM Caching documentation on how to use.",
+            "metadata": {
+                "description": "Motherduck is a managed DuckDB-in-the-cloud service.",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/providers/motherduck/",
+                "title": "Motherduck | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        }
+    ],
+    [
+        {
+            "page_content": "ScrapingAnt API instead of self-made solutions development.\\n\\n99.99%\\n\\nUptime over the last year.\\n\\n85.5%\\n\\nAnti-scraping avoidance rate with our custom cloud browser solution\\n\\n![](images/icon-gallery-dark.svg)\\n\\n### Unlimited parallel requests\\n\\n![](images/icon-id-dark.svg)\\n\\n### 3+ million proxy servers across the world\\n\\n![](images/icon-switcher-white.svg)\\n\\n### Open your web page as in a real browser\\n\\n![](images/Doodle-9-Dark.svg)\\n\\nSimple API integration\\n\\n1\\n\\n### Choose your plan\\n\\nWe offer subscription plans, or you can always request custom pricing.",
+            "metadata": {
+                "description": "Overview",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/document_loaders/scrapingant/",
+                "title": "ScrapingAnt | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        },
+        {
+            "page_content": ", [Get in\\ntouch](https://scrapingant.com/#contact) with our friendly team\\n\\n##### What is ScrapingAnt?\\n\\n![](images/icon-arrow-right.svg)\\n\\nScrapingAnt is a service that helps you to solve scraping tasks of any\\ncomplexity. With using of millions proxies around the World and a whole\\nheadless browser cluster we can provide you the best web harvesting and\\nscraping experience.  \\n  \\nScrapingAnt also provides a custom software development service. Data\\nharvesting, data storage or data querying - we can provide you the best and\\naffordable custom solution that fits all your needs.\\n\\n##### **What is an API Credit?**\\n\\n![](images/icon-arrow-right.svg)\\n\\nEach subscription plan",
+            "metadata": {
+                "description": "Overview",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/document_loaders/scrapingant/",
+                "title": "ScrapingAnt | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        },
+        {
+            "page_content": "\\n\\n![](images/icon-arrow-right.svg)\\n\\nScrapingAnt is a service that helps you to solve scraping tasks of any\\ncomplexity. With using of millions proxies around the World and a whole\\nheadless browser cluster we can provide you the best web harvesting and\\nscraping experience.  \\n  \\nScrapingAnt also provides a custom software development service. Data\\nharvesting, data storage or data querying - we can provide you the best and\\naffordable custom solution that fits all your needs.\\n\\n##### **What is an API Credit?**\\n\\n![](images/icon-arrow-right.svg)\\n\\nEach subscription plan contains a particular amount of API credits per month.\\nDepending on the parameters you configures your API calls it will cost you\\nfrom one to several credits. By default",
+            "metadata": {
+                "description": "Overview",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/document_loaders/scrapingant/",
+                "title": "ScrapingAnt | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        }
+    ]
+]

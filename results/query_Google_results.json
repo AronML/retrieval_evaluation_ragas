@@ -1,0 +1,437 @@
+[
+    [
+        {
+            "page_content": " \n    from ibm_watsonx_ai import APIClient  \n      \n    api_client = APIClient(...)  \n      \n    watsonx_llm = WatsonxLLM(  \n        model_id=\"ibm/granite-13b-instruct-v2\",  \n        watsonx_client=api_client,  \n    )  \n    \n\nYou can also pass the IBM's `ModelInference` object into the `WatsonxLLM`\nclass.\n\n    \n    \n    from ibm_watsonx_ai.foundation_models import ModelInference  \n      \n  ",
+            "metadata": {
+                "description": "WatsonxLLM is a wrapper for IBM watsonx.ai foundation models.",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/llms/ibm_watsonx/",
+                "title": "IBM watsonx.ai | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        },
+        {
+            "page_content": ".environ[\"WATSONX_APIKEY\"] = \"your IBM watsonx.ai api key\"  \n    \n\n## Chat Model\u200b\n\n### ChatWatsonx\u200b\n\nSee a usage example.\n\n    \n    \n    from langchain_ibm import ChatWatsonx  \n    \n\n## LLMs\u200b\n\n### WatsonxLLM\u200b\n\nSee a usage example.\n\n    \n    \n    from langchain_ibm import WatsonxLLM  \n    \n\n## Embedding Models\u200b\n\n### WatsonxEmbeddings\u200b\n\nSee a usage example.\n\n    \n    \n    from langchain_ibm import WatsonxEmbeddings",
+            "metadata": {
+                "description": "The LangChain integrations related to IBM watsonx.ai platform.",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/providers/ibm/",
+                "title": "IBM | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        },
+        {
+            "page_content": " previously\ntuned model. The entire model tuning workflow is described here.\n\n    \n    \n    watsonx_llm = WatsonxLLM(  \n        deployment_id=\"PASTE YOUR DEPLOYMENT_ID HERE\",  \n        url=\"https://us-south.ml.cloud.ibm.com\",  \n        project_id=\"PASTE YOUR PROJECT_ID HERE\",  \n        params=parameters,  \n    )  \n    \n\nFor certain requirements, there is an option to pass the IBM's `APIClient`\nobject into the `WatsonxLLM` class.\n\n    \n    \n    from ibm_w",
+            "metadata": {
+                "description": "WatsonxLLM is a wrapper for IBM watsonx.ai foundation models.",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/llms/ibm_watsonx/",
+                "title": "IBM watsonx.ai | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        }
+    ],
+    [
+        {
+            "page_content": "# SearchApi\n\nThis page covers how to use the SearchApi Google Search API within LangChain.\nSearchApi is a real-time SERP API for easy SERP scraping.\n\n## Setup\u200b\n\n  * Go to https://www.searchapi.io/ to sign up for a free account\n  * Get the api key and set it as an environment variable (`SEARCHAPI_API_KEY`)\n\n## Wrappers\u200b\n\n### Utility\u200b\n\nThere is a SearchApiAPIWrapper utility which wraps this API. To import this\nutility:\n\n    \n    \n    from langchain_community.utilities import SearchApiAPIWrapper  \n    \n\n**API Reference:**SearchApiAPIWrapper\n\nYou can use it as part of a Self Ask chain:\n\n    \n    ",
+            "metadata": {
+                "description": "This page covers how to use the SearchApi Google Search API within LangChain. SearchApi is a real-time SERP API for easy SERP scraping.",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/providers/searchapi/",
+                "title": "SearchApi | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        },
+        {
+            "page_content": "    \n\n**API Reference:**GoogleSerperAPIWrapper\n\nYou can use it as part of a Self Ask chain:\n\n    \n    \n    from langchain_community.utilities import GoogleSerperAPIWrapper  \n    from langchain_openai import OpenAI  \n    from langchain.agents import initialize_agent, Tool  \n    from langchain.agents import AgentType  \n      \n    import os  \n      \n    os.environ[\"SERPER_API_KEY\"] = \"\"  \n    os.environ['OPENAI_API_KEY'] = \"\"  \n      \n    llm = OpenAI(temperature=0)  \n    search",
+            "metadata": {
+                "description": "This page covers how to use the Serper Google Search API within LangChain. Serper is a low-cost Google Search API that can be used to add answer box, knowledge graph, and organic results data from Google Search.",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/providers/google_serper/",
+                "title": "Serper - Google Search API | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        },
+        {
+            "page_content": "   from langchain_core.tools import Tool  \n    from langchain_openai import OpenAI  \n      \n    llm = OpenAI(temperature=0)  \n    search = GoogleSerperAPIWrapper()  \n    tools = [  \n        Tool(  \n            name=\"Intermediate Answer\",  \n            func=search.run,  \n            description=\"useful for when you need to ask with search\",  \n        )  \n    ]  \n      \n    self_ask_with_search = initialize_agent(  \n ",
+            "metadata": {
+                "description": "This notebook goes over how to use the Google Serper component to search the web. First you need to sign up for a free account at serper.dev and get your api key.",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/tools/google_serper/",
+                "title": "Google Serper | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        }
+    ],
+    [
+        {
+            "page_content": "# Wikipedia\n\n> Wikipedia is a multilingual free online encyclopedia written and maintained\n> by a community of volunteers, known as Wikipedians, through open\n> collaboration and using a wiki-based editing system called MediaWiki.\n> `Wikipedia` is the largest and most-read reference work in history.\n\nThis notebook shows how to load wiki pages from `wikipedia.org` into the\nDocument format that we use downstream.\n\n## Installation\u200b\n\nFirst, you need to install `wikipedia` python package.\n\n    \n    \n    %pip install --upgrade --quiet  wikipedia  \n    \n\n## Examples\u200b\n\n`WikipediaLoader` has these arguments:\n\n  * `query`: free text which used to find documents in Wikipedia\n  * optional `lang`: default=\"en\". Use it to search in a specific language part of Wikipedia\n  * optional",
+            "metadata": {
+                "description": "Wikipedia is a multilingual free online encyclopedia written and maintained by a community of volunteers, known as Wikipedians, through open collaboration and using a wiki-based editing system called MediaWiki. Wikipedia is the largest and most-read reference work in history.",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/document_loaders/wikipedia/",
+                "title": "Wikipedia | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        },
+        {
+            "page_content": "# Wikipedia\n\n> Wikipedia is a multilingual free online encyclopedia written and maintained\n> by a community of volunteers, known as Wikipedians, through open\n> collaboration and using a wiki-based editing system called MediaWiki.\n> `Wikipedia` is the largest and most-read reference work in history.\n\n## Installation and Setup\u200b\n\n    \n    \n    pip install wikipedia  \n    \n\n## Document Loader\u200b\n\nSee a usage example.\n\n    \n    \n    from langchain_community.document_loaders import WikipediaLoader  \n    \n\n**API Reference:**WikipediaLoader\n\n## Retriever\u200b\n\nSee a usage example.\n\n    \n    \n    from langchain.retrievers import WikipediaRetriever  \n    ",
+            "metadata": {
+                "description": "Wikipedia is a multilingual free online encyclopedia written and maintained by a community of volunteers, known as Wikipedians, through open collaboration and using a wiki-based editing system called MediaWiki. Wikipedia is the largest and most-read reference work in history.",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/providers/wikipedia/",
+                "title": "Wikipedia | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        },
+        {
+            "page_content": "# WikipediaRetriever\n\n## Overview\u200b\n\n> Wikipedia is a multilingual free online encyclopedia written and maintained\n> by a community of volunteers, known as Wikipedians, through open\n> collaboration and using a wiki-based editing system called MediaWiki.\n> `Wikipedia` is the largest and most-read reference work in history.\n\nThis notebook shows how to retrieve wiki pages from `wikipedia.org` into the\nDocument format that is used downstream.\n\n### Integration details\u200b\n\nRetriever| Source| Package  \n---|---|---  \nWikipediaRetriever| Wikipedia articles| langchain_community  \n  \n## Setup\u200b\n\nIf you want to get automated tracing from runs of individual tools, you can\nalso set your LangSmith API key by uncommenting below:\n\n    \n    \n    # os.environ[\"LANGSMITH",
+            "metadata": {
+                "description": "Overview",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/retrievers/wikipedia/",
+                "title": "WikipediaRetriever | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        }
+    ],
+    [
+        {
+            "page_content": " \n    from langchain_community.utilities.wolfram_alpha import WolframAlphaAPIWrapper  \n    \n\n**API Reference:**WolframAlphaAPIWrapper\n\nFor a more detailed walkthrough of this wrapper, see this notebook.\n\n### Tool\u200b\n\nYou can also easily load this wrapper as a Tool (to use with an Agent). You\ncan do this with:\n\n    \n    \n    from langchain.agents import load_tools  \n    tools = load_tools([\"wolfram-alpha\"])  \n    \n\n**API Reference:**load_tools\n\nFor more information on tools, see this page.",
+            "metadata": {
+                "description": "WolframAlpha is an answer engine developed by Wolfram Research.",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/providers/wolfram_alpha/",
+                "title": "Wolfram Alpha | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        },
+        {
+            "page_content": "# Wolfram Alpha\n\n> WolframAlpha is an answer engine developed by `Wolfram Research`. It answers\n> factual queries by computing answers from externally sourced data.\n\nThis page covers how to use the `Wolfram Alpha API` within LangChain.\n\n## Installation and Setup\u200b\n\n  * Install requirements with \n\n    \n    \n    pip install wolframalpha  \n    \n\n  * Go to wolfram alpha and sign up for a developer account here\n  * Create an app and get your `APP ID`\n  * Set your APP ID as an environment variable `WOLFRAM_ALPHA_APPID`\n\n## Wrappers\u200b\n\n### Utility\u200b\n\nThere exists a WolframAlphaAPIWrapper utility which wraps this API. To import\nthis utility:\n\n    \n    \n    from langchain_community",
+            "metadata": {
+                "description": "WolframAlpha is an answer engine developed by Wolfram Research.",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/providers/wolfram_alpha/",
+                "title": "Wolfram Alpha | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        },
+        {
+            "page_content": "# Wolfram Alpha\n\nThis notebook goes over how to use the wolfram alpha component.\n\nFirst, you need to set up your Wolfram Alpha developer account and get your\nAPP ID:\n\n  1. Go to wolfram alpha and sign up for a developer account here\n  2. Create an app and get your APP ID\n  3. pip install wolframalpha\n\nThen we will need to set some environment variables:\n\n  1. Save your APP ID into WOLFRAM_ALPHA_APPID env variable\n\n    \n    \n    pip install wolframalpha  \n    \n    \n    \n    import os  \n      \n    os.environ[\"WOLFRAM_ALPHA_APPID\"] = \"\"  \n    \n    \n",
+            "metadata": {
+                "description": "This notebook goes over how to use the wolfram alpha component.",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/tools/wolfram_alpha/",
+                "title": "Wolfram Alpha | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        }
+    ],
+    [
+        {
+            "page_content": " \"get_current_weather\"}},  \n    )  \n    \n\n**API Reference:**tool\n\n    \n    \n    ai_msg = llm_with_tools.invoke(  \n        \"what is the weather like in HCMC in celsius\",  \n    )  \n    \n    \n    \n    ai_msg.tool_calls  \n    \n    \n    \n    [{'name': 'get_current_weather',  \n      'args': {'location': 'Ho Chi Minh City', 'unit': 'celsius'},  \n      'id': 'call__0_get_",
+            "metadata": {
+                "description": "llama.cpp python library is a simple Python bindings for @ggerganov",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/chat/llamacpp/",
+                "title": "Llama.cpp | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        },
+        {
+            "page_content": "enum=[\"celsius\", \"fahrenheit\"])  \n      \n      \n    @tool(\"get_current_weather\", args_schema=WeatherInput)  \n    def get_weather(location: str, unit: str):  \n        \"\"\"Get the current weather in a given location\"\"\"  \n        return f\"Now the weather in {location} is 22 {unit}\"  \n      \n      \n    llm_with_tools = llm.bind_tools(  \n        tools=[get_weather],  \n        tool_choice={\"type\": \"function\", \"function\": {\"name\": \"get_current_weather\"}},  ",
+            "metadata": {
+                "description": "llama.cpp python library is a simple Python bindings for @ggerganov",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/chat/llamacpp/",
+                "title": "Llama.cpp | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        },
+        {
+            "page_content": " 'id': 'call__0_get_current_weather_cmpl-394d9943-0a1f-425b-8139-d2826c1431f2'}]  \n    \n    \n    \n    class MagicFunctionInput(BaseModel):  \n        magic_function_input: int = Field(description=\"The input value for magic function\")  \n      \n      \n    @tool(\"get_magic_function\", args_schema=MagicFunctionInput)  \n    def magic_function(magic_function_input: int):  \n        \"\"\"Get the value of magic function for an input.\"\"\"  \n        return magic_function_input + 2 ",
+            "metadata": {
+                "description": "llama.cpp python library is a simple Python bindings for @ggerganov",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/chat/llamacpp/",
+                "title": "Llama.cpp | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        }
+    ],
+    [
+        {
+            "page_content": "ExchangeAPIWrapper\n\nFor a more detailed walkthrough of this wrapper, see this notebook.\n\n### Tool\u200b\n\nYou can also easily load this wrapper as a Tool (to use with an Agent). You\ncan do this with:\n\n    \n    \n    from langchain.agents import load_tools  \n    tools = load_tools([\"stackexchange\"])  \n    \n\n**API Reference:**load_tools\n\nFor more information on tools, see this page.",
+            "metadata": {
+                "description": "Stack Exchange is a network of",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/providers/stackexchange/",
+                "title": "Stack Exchange | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        },
+        {
+            "page_content": "\n    \n\n**API Reference:**LabelStudioCallbackHandler",
+            "metadata": {
+                "description": "Label Studio is an open-source data labeling platform that provides LangChain with flexibility when it comes to labeling data for fine-tuning large language models (LLMs). It also enables the preparation of custom training data and the collection and evaluation of responses through human feedback.",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/providers/labelstudio/",
+                "title": "Label Studio | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        },
+        {
+            "page_content": " \n    \n\n**API Reference:**DeepEvalCallbackHandler",
+            "metadata": {
+                "description": "Confident AI is a creator of the DeepEval.",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/providers/confident/",
+                "title": "Confident AI | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        }
+    ],
+    [
+        {
+            "page_content": " \"This is useful for converting LLM output into audio bytes.\"  \n        )  \n      \n        # riva options  \n        voice_name: str = Field(  \n            \"English-US.Female-1\",  \n            description=(  \n                \"The voice model in Riva to use for speech. \"  \n                \"Pre-trained models are documented in \"  \n                \"[the Riva documentation]\"  \n             ",
+            "metadata": {
+                "description": "NVIDIA Riva",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/tools/nvidia_riva/",
+                "title": "NVIDIA Riva: ASR and TTS | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        },
+        {
+            "page_content": "# ElevenLabs\n\n> ElevenLabs is a voice AI research & deployment company with a mission to\n> make content universally accessible in any language & voice.\n>\n> `ElevenLabs` creates the most realistic, versatile and contextually-aware AI\n> audio, providing the ability to generate speech in hundreds of new and\n> existing voices in 29 languages.\n\n## Installation and Setup\u200b\n\nFirst, you need to set up an ElevenLabs account. You can follow the\ninstructions here.\n\nInstall the Python package:\n\n    \n    \n    pip install elevenlabs  \n    \n\n## Tools\u200b\n\nSee a usage example.\n\n    \n    \n    from langchain_community.tools import ElevenLabsText2SpeechTool  \n    \n\n**API Reference:**",
+            "metadata": {
+                "description": "ElevenLabs is a voice AI research & deployment company",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/providers/elevenlabs/",
+                "title": "ElevenLabs | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        },
+        {
+            "page_content": "2Speech']  \n    \n\n## Use within an Agent\u200b\n\n    \n    \n    from langchain.agents import AgentType, initialize_agent  \n    from langchain_openai import OpenAI  \n    \n\n**API Reference:**AgentType | initialize_agent | OpenAI\n    \n    \n    llm = OpenAI(temperature=0)  \n    agent = initialize_agent(  \n        tools=toolkit.get_tools(),  \n        llm=llm,  \n        agent=AgentType.STRUCTURED_CHAT_ZERO_SHOT_REACT_DESCRIPTION,  \n        verbose",
+            "metadata": {
+                "description": "This toolkit is used to interact with the Azure Cognitive Services API to achieve some multimodal capabilities.",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/tools/azure_cognitive_services/",
+                "title": "Azure Cognitive Services Toolkit | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        }
+    ],
+    [
+        {
+            "page_content": "    \n\n**API Reference:**GoogleSerperAPIWrapper\n\nYou can use it as part of a Self Ask chain:\n\n    \n    \n    from langchain_community.utilities import GoogleSerperAPIWrapper  \n    from langchain_openai import OpenAI  \n    from langchain.agents import initialize_agent, Tool  \n    from langchain.agents import AgentType  \n      \n    import os  \n      \n    os.environ[\"SERPER_API_KEY\"] = \"\"  \n    os.environ['OPENAI_API_KEY'] = \"\"  \n      \n    llm = OpenAI(temperature=0)  \n    search",
+            "metadata": {
+                "description": "This page covers how to use the Serper Google Search API within LangChain. Serper is a low-cost Google Search API that can be used to add answer box, knowledge graph, and organic results data from Google Search.",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/providers/google_serper/",
+                "title": "Serper - Google Search API | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        },
+        {
+            "page_content": "# Serper - Google Search API\n\nThis page covers how to use the Serper Google Search API within LangChain.\nSerper is a low-cost Google Search API that can be used to add answer box,\nknowledge graph, and organic results data from Google Search. It is broken\ninto two parts: setup, and then references to the specific Google Serper\nwrapper.\n\n## Setup\u200b\n\n  * Go to serper.dev to sign up for a free account\n  * Get the api key and set it as an environment variable (`SERPER_API_KEY`)\n\n## Wrappers\u200b\n\n### Utility\u200b\n\nThere exists a GoogleSerperAPIWrapper utility which wraps this API. To import\nthis utility:\n\n    \n    \n    from langchain_community.utilities import GoogleSerperAPIWrapper  \n    \n\n**API Reference:",
+            "metadata": {
+                "description": "This page covers how to use the Serper Google Search API within LangChain. Serper is a low-cost Google Search API that can be used to add answer box, knowledge graph, and organic results data from Google Search.",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/providers/google_serper/",
+                "title": "Serper - Google Search API | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        },
+        {
+            "page_content": "pper\n\n    \n    \n    search = GoogleSerperAPIWrapper()  \n    \n    \n    \n    search.run(\"Obama's first name?\")  \n    \n    \n    \n    'Barack Hussein Obama II'  \n    \n\n## As part of a Self Ask With Search Chain\u200b\n\n    \n    \n    os.environ[\"OPENAI_API_KEY\"] = \"\"  \n    \n    \n    \n    from langchain.agents import AgentType, initialize_agent  \n    from langchain_community.utilities import GoogleSerperAPIWrapper  \n    from langchain_core.tools import",
+            "metadata": {
+                "description": "This notebook goes over how to use the Google Serper component to search the web. First you need to sign up for a free account at serper.dev and get your api key.",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/tools/google_serper/",
+                "title": "Google Serper | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        }
+    ],
+    [
+        {
+            "page_content": " full scrape unless new content exists.\\n\\n#### Built for AI\\n\\nBuilt by LLM engineers, for LLM engineers. Giving you clean data the way you want it.\\n\\nOur wall of love\\n\\nDon\\'t take our word for it\\n--------------------------\\n\\n![Greg Kamradt](https://www.firecrawl.dev/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Ftestimonial-02.0afeb750.jpg&w=96&q=75)\\n\\nGreg Kamradt\\n\\n[@GregKamradt](https://twitter.com/GregKamradt/status/1780300642197840307)\\n\\nLLM structured data via API, handling requests, cleaning, and crawling. Enjoyed the early preview.\\n\\n![",
+            "metadata": {
+                "description": "FireCrawl crawls and convert any website into LLM-ready data. It crawls all accessible subpages and give you clean markdown and metadata for each. No sitemap required.",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/document_loaders/firecrawl/",
+                "title": "FireCrawl | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        },
+        {
+            "page_content": "\u2764\ufe0f\u2764\ufe0f\\n\\n![Greg Kamradt](https://www.firecrawl.dev/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Ftestimonial-02.0afeb750.jpg&w=96&q=75)\\n\\nGreg Kamradt\\n\\n[@GregKamradt](https://twitter.com/GregKamradt/status/1780300642197840307)\\n\\nLLM structured data via API, handling requests, cleaning, and crawling. Enjoyed the early preview.\\n\\n![Amit Naik](https://www.firecrawl.dev/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Ftestimonial-03.ff5dbe11.jpg&w=96&q=75",
+            "metadata": {
+                "description": "FireCrawl crawls and convert any website into LLM-ready data. It crawls all accessible subpages and give you clean markdown and metadata for each. No sitemap required.",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/document_loaders/firecrawl/",
+                "title": "FireCrawl | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        },
+        {
+            "page_content": "://www.demand.io)\\n\\n[![Customer Logo](https://www.firecrawl.dev/logos/nocodegarden-io.png)](https://www.nocodegarden.io)\\n\\n[![Customer Logo](https://www.firecrawl.dev/logos/cyberagent-co-jp.svg)](https://www.cyberagent.co.jp)\\n\\nIntegrate today\\n---------------\\n\\nEnhance your applications with top-tier web scraping and crawling capabilities.\\n\\n#### Scrape\\n\\nExtract markdown or structured data from websites quickly and efficiently.\\n\\n#### Crawling\\n\\nNavigate and retrieve data from all accessible subpages, even without a sitemap.\\n\\nNode.js\\n\\nPython\\n\\ncURL\\n\\n1",
+            "metadata": {
+                "description": "FireCrawl crawls and convert any website into LLM-ready data. It crawls all accessible subpages and give you clean markdown and metadata for each. No sitemap required.",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/document_loaders/firecrawl/",
+                "title": "FireCrawl | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        }
+    ],
+    [
+        {
+            "page_content": "  from langchain_community.embeddings import LlamaCppEmbeddings  \n    \n\n**API Reference:**LlamaCppEmbeddings",
+            "metadata": {
+                "description": "llama.cpp python library is a simple Python bindings for @ggerganov",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/providers/llamacpp/",
+                "title": "Llama.cpp | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        },
+        {
+            "page_content": " llama-cpp-python  \n    \n    \n    \n    from langchain_community.embeddings import LlamaCppEmbeddings  \n    \n\n**API Reference:**LlamaCppEmbeddings\n\n    \n    \n    llama = LlamaCppEmbeddings(model_path=\"/path/to/model/ggml-model-q4_0.bin\")  \n    \n    \n    \n    text = \"This is a test document.\"  \n    \n    \n    \n    query_result = llama.embed_query(text)  \n    \n    \n    \n    doc_",
+            "metadata": {
+                "description": "llama.cpp python library is a simple Python bindings for @ggerganov",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/text_embedding/llamacpp/",
+                "title": "Llama.cpp | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        },
+        {
+            "page_content": "    pip install llama-cpp-python  \n    \n\n  * Download one of the supported models and convert them to the llama.cpp format per the instructions\n\n## Chat models\u200b\n\nSee a usage example.\n\n    \n    \n    from langchain_community.chat_models import ChatLlamaCpp  \n    \n\n**API Reference:**ChatLlamaCpp\n\n## LLMs\u200b\n\nSee a usage example.\n\n    \n    \n    from langchain_community.llms import LlamaCpp  \n    \n\n**API Reference:**LlamaCpp\n\n## Embedding models\u200b\n\nSee a usage example.\n\n    \n    \n    from langchain_community.embeddings",
+            "metadata": {
+                "description": "llama.cpp python library is a simple Python bindings for @ggerganov",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/providers/llamacpp/",
+                "title": "Llama.cpp | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        }
+    ],
+    [
+        {
+            "page_content": " vector index is used as a vectorstore, whether for semantic search\nor example selection.\n\n    \n    \n    from langchain_community.vectorstores import Neo4jVector  \n    \n\n**API Reference:**Neo4jVector\n\nSee a usage example\n\n## GraphCypherQAChain\u200b\n\nThere exists a wrapper around Neo4j graph database that allows you to generate\nCypher statements based on the user input and use them to retrieve relevant\ninformation from the database.\n\n    \n    \n    from langchain_community.graphs import Neo4jGraph  \n    from langchain.chains import GraphCypherQAChain  \n    \n\n**API Reference:**Neo4jGraph | GraphCypherQAChain\n\nSee a usage example\n",
+            "metadata": {
+                "description": "What is Neo4j?",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/providers/neo4j/",
+                "title": "Neo4j | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        },
+        {
+            "page_content": "# Neo4j\n\n> What is `Neo4j`?\n\n>   * Neo4j is an `open-source database management system` that specializes in\n> graph database technology.\n>   * Neo4j allows you to represent and store data in nodes and edges, making\n> it ideal for handling connected data and relationships.\n>   * Neo4j provides a `Cypher Query Language`, making it easy to interact\n> with and query your graph data.\n>   * With Neo4j, you can achieve high-performance `graph traversals and\n> queries`, suitable for production-level systems.\n>\n\n> Get started with Neo4j by visiting their website.\n\n## Installation and Setup\u200b\n\n  * Install the Python SDK with `pip install neo4j`\n\n## VectorStore\u200b\n\nThe Neo4j vector index is used as a vectorstore, whether",
+            "metadata": {
+                "description": "What is Neo4j?",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/providers/neo4j/",
+                "title": "Neo4j | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        },
+        {
+            "page_content": "  \n    \n\nSee a usage example.\n\n    \n    \n    from langchain_community.agent_toolkits import PlayWrightBrowserToolkit  \n    \n\n**API Reference:**PlayWrightBrowserToolkit\n\n## Graphs\u200b\n\n### Azure Cosmos DB for Apache Gremlin\u200b\n\nWe need to install a python package.\n\n    \n    \n    pip install gremlinpython  \n    \n\nSee a usage example.\n\n    \n    \n    from langchain_community.graphs import GremlinGraph  \n    from langchain_community.graphs.graph_document import GraphDocument, Node, Relationship  \n    \n\n**API Reference:**GremlinGraph | GraphDocument | Node |",
+            "metadata": {
+                "description": "All functionality related to Microsoft Azure and other Microsoft products.",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/platforms/microsoft/",
+                "title": "Microsoft | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        }
+    ],
+    [
+        {
+            "page_content": "isearch will convert the text to multiple vectors. This\nwill bring us to the same result as the following example.\n\n### Adding documents and embeddings\u200b\n\nIn this example, we'll use Langchain TextSplitter to split the text in\nmultiple documents. Then, we'll store these documents along with their\nembeddings.\n\n    \n    \n    from langchain_community.document_loaders import TextLoader  \n      \n    # Load text  \n    loader = TextLoader(\"../../how_to/state_of_the_union.txt\")  \n    documents = loader.load()  \n    text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=0)  \n      \n    # Create documents",
+            "metadata": {
+                "description": "Meilisearch is an open-source, lightning-fast, and hyper relevant search engine. It comes with great defaults to help developers build snappy search experiences.",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/vectorstores/meilisearch/",
+                "title": "Meilisearch | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        },
+        {
+            "page_content": "\n\n### Prepare the Data\u200b\n\n    \n    \n    loader = TextLoader(\"../../how_to/state_of_the_union.txt\")  \n    documents = loader.load()  \n    text_splitter = SpacyTextSplitter(separator=\"|\")  \n    texts = []  \n    for doc in text_splitter.split_documents(documents):  \n        texts.extend(doc.page_content.split(\"|\"))  \n      \n    texts = [e.strip() for e in texts]  \n    \n\n### Map the Data using Nomic's Atlas\u200b\n\n    \n    \n    db = AtlasDB.from_texts(",
+            "metadata": {
+                "description": "Atlas is a platform by Nomic made for interacting with both small and internet scale unstructured datasets. It enables anyone to visualize, search, and share massive datasets in their browser.",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/vectorstores/atlas/",
+                "title": "Atlas | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        },
+        {
+            "page_content": " from langchain_community.vectorstores import FAISS  \n    from langchain_text_splitters import RecursiveCharacterTextSplitter  \n      \n    documents = TextLoader(\"../../how_to/state_of_the_union.txt\").load()  \n    text_splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=100)  \n    texts = text_splitter.split_documents(documents)  \n    retriever = FAISS.from_documents(  \n        texts, CohereEmbeddings(model=\"embed-english-v3.0\")  \n    ).as_retriever(search_kwargs={\"k\": 20})  \n      \n",
+            "metadata": {
+                "description": "Cohere is a Canadian startup that provides natural language processing models that help companies improve human-machine interactions.",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/retrievers/cohere-reranker/",
+                "title": "Cohere reranker | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        }
+    ],
+    [
+        {
+            "page_content": "dx  \n      \n    ==> CONTENT <==   \n    Created by  \n    Created the  \n    Modified by  \n    Modified the  \n    Version  \n    Title  \n    Florian MOREL  \n    2024-01-14  \n    FLORIAN Morel  \n    Today  \n    0.0.0.0.0.1  \n    This is a title  \n    Something white  \n    Something Red  \n    This a a completly useless diagramm, cool !!  \n      \n    But this is for example !  \n    This diagramm is a base of many",
+            "metadata": {
+                "description": "A visio file (with extension .vsdx) is associated with Microsoft Visio, a diagram creation software. It stores information about the structure, layout, and graphical elements of a diagram. This format facilitates the creation and sharing of visualizations in areas such as business, engineering, and computer science.",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/document_loaders/vsdx/",
+                "title": "Vsdx | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        },
+        {
+            "page_content": "   \n    Created by  \n    Created the  \n    Modified by  \n    Modified the  \n    Version  \n    Title  \n    Florian MOREL  \n    2024-01-14  \n    FLORIAN Morel  \n    Today  \n    0.0.0.0.0.1  \n    This is a title  \n    Another RED arrow wow  \n    Arrow with point but red  \n    Green line  \n    User  \n    Captions  \n    Red arrow magic !  \n    Something white  \n    Something Red  \n    This a a completly useless diagramm, cool",
+            "metadata": {
+                "description": "A visio file (with extension .vsdx) is associated with Microsoft Visio, a diagram creation software. It stores information about the structure, layout, and graphical elements of a diagram. This format facilitates the creation and sharing of visualizations in areas such as business, engineering, and computer science.",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/document_loaders/vsdx/",
+                "title": "Vsdx | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        },
+        {
+            "page_content": " \n    Title  \n    Florian MOREL  \n    2024-01-14  \n    FLORIAN Morel  \n    Today  \n    0.0.0.0.0.1  \n    This is a title  \n    Another RED arrow wow  \n    Arrow with point but red  \n    Green line  \n    User  \n    Captions  \n    Red arrow magic !  \n    Something white  \n    Something Red  \n    This a a completly useless diagramm, cool !!  \n      \n    But this is for example !  \n    This diagramm is a base of many pages in this file. But it",
+            "metadata": {
+                "description": "A visio file (with extension .vsdx) is associated with Microsoft Visio, a diagram creation software. It stores information about the structure, layout, and graphical elements of a diagram. This format facilitates the creation and sharing of visualizations in areas such as business, engineering, and computer science.",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/document_loaders/vsdx/",
+                "title": "Vsdx | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        }
+    ],
+    [
+        {
+            "page_content": " And what if we could assembly these instructions on the fly ?  Essentially cats toss aside traditional functions and just consider the underlying instructions as a big phat dependency graph. Now you can reuse code at a much more granular level. Sure you might still have functions, but mostly as a nexus for things other than managing instructions. For starters, an inventory / crafting approach no longer forces you to start at the beginning of a function. If you already have some items, you can skip steps. Thanks to the notion of \u201cinventory\u201d, caching becomes automatic. Now close your eyes and imagine your codebase like a database - some imaginary glowing network floating in cyberspace - and then imagine your \u2018program\u2019 as a \u2018query\u2019 of sorts that zaps around this mesh. I realize this is a bit radical because code is usually glued together in such a way that there is really only mainline \u201cpath\u201d in the runtime and any \u201cbranching\ufffd",
+            "metadata": {
+                "description": "Exa is a search engine fully designed for use by LLMs. Search for documents on the internet using natural language queries, then retrieve cleaned HTML content from desired documents.",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/tools/exa_search/",
+                "title": "Exa Search | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        },
+        {
+            "page_content": " mini commands and see what happens, without all the overhead of traditional programming.  The Silicon Valley stack is hopelessly outdated in this regard. Obviously we are talking our book here but if we plan to colonize space someday, then programmers should not be burdened with Docker or Kubernetes every time they need to change a line of code  Cats - almost by definition - are particularly good as \u201cjoining\u201d things because they must be able to assemble code on the fly. To pull this magic off, we need to start thinking of code more like data than text. At the math level, CT shares a lot in common with Relational Theory from the database world, except we can apply a lot of these concepts to code instead of data. No more need for Zapier-esque vendor tools. Because crafting is more declarative than imperative, you can even issue crafting requests over a network. Why not just type or speak a command and let the computer decide if a distributed operation",
+            "metadata": {
+                "description": "Exa is a search engine fully designed for use by LLMs. Search for documents on the internet using natural language queries, then retrieve cleaned HTML content from desired documents.",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/tools/exa_search/",
+                "title": "Exa Search | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        },
+        {
+            "page_content": " command and let the computer decide if a distributed operation is needed? Now we have something that starts to look like real cyberpunk. Next-generation convergence hardware such as persistent memory and NVRAM makes almost no sense to programmers stuck in the outdated world of transient memory, but suddenly makes a world of sense when you starting working with cats.  System integration? Putting things in persistent memory is a natural common ground as you try to tie things across various enterprise systems.  Hotloading? Persistent memory becomes almost necessary when you need to cache things between hotloads.  Crafting and inductive reasoning and basic AI go almost hand in hand. Instead of programming, you submit a crafting request and let the machine figure out all the details. If your \u201cinventory\u201d falls short, the computer will let you know what skeletons you need to slay next.         As far back as 1972 we knew that you could run a straight line from a dependency graph to relations to",
+            "metadata": {
+                "description": "Exa is a search engine fully designed for use by LLMs. Search for documents on the internet using natural language queries, then retrieve cleaned HTML content from desired documents.",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/tools/exa_search/",
+                "title": "Exa Search | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        }
+    ],
+    [
+        {
+            "page_content": "0UAJRRRTASiloxQAlFFFACd6WiigYYpKWigBKKWkpgJRS0lABRRRQMSiloxTASiiigApKWigBKKWkoAKSlopgJRRRQMKSlooASiiigBMUUtFAxKQilxRTEJRS0lAwxSUtFACUUUUAFJS0UxiUYpaSgBKKWkoASjFLRTGNopaKAEopaSgAxSUtFMDZoooriMBKKWkpgFFFFABRRRQAUlLRQAlFLijFACUUUUAFFFFACUUtFMBKSlooEJRS4pKACiiigYlJmnUlMAoNFFACUtFGKAEooooAKKKKACiiigAooooASig0uKAEooooAKSlooASilpKYBRRRQ",
+            "metadata": {
+                "description": "Ollama allows you to run open-source large language models, such as Llama 2, locally.",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/chat/ollama/",
+                "title": "ChatOllama | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        },
+        {
+            "page_content": "xBRRRQAUUUUAFFFFACUUtJQAUUUUAFFFFABRRRQAUUUUAFFFFABRiiigQlFLRQMSiiimAUUUUCEopaSgAooooGFFFFAgooooAKKKKACiiigApKWigBKKKKACiiimAUUUUAFFFFAgooooASilpKACiiigAooooASilpKACiiigAooooAKKKKACiiigAooo70AFFFFACUUtFMBKKKKACiiigAooopAFFFFMAooooAKSlooASilooASiiigAooooAKKKKACkpaSmBcooorE0CkpaKAEooooAKKKKYgooooAKKKKACiiigAooooAKKKKAEopaSgAooooAKKKKACkpaSgAooopiCiiigAooooAKKKKAEopaSgAooooAKKKK",
+            "metadata": {
+                "description": "Ollama allows you to run open-source large language models, such as Llama 2, locally.",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/chat/ollama/",
+                "title": "ChatOllama | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        },
+        {
+            "page_content": "RQMSiiimAUUUUCEopaSgAooooGFFFFAgooooAKKKKACiiigApKWigBKKKKACiiimAUUUUAFFFFAgooooASilpKACiiigAooooASilpKACiiigAooooAKKKKACiiigAooo70AFFFFACUUtFMBKKKKACiiigAooopAFFFFMAooooAKSlooASilooASiiigAooooAKKKKACkpaSmBcooorE0CkpaKAEooooAKKKKYgooooAKKKKACiiigAooooAKKKKAEopaSgAooooAKKKKACkpaSgAooopiCiiigAooooAKKKKAEopaSgAooooAKKKKACiiigAooooAKKKKACiiigQUlLRQMSiiimAUUUUhCUUtJTAKKKKACiiigAoooo",
+            "metadata": {
+                "description": "You are currently on a page documenting the use of Ollama models as text completion models. Many popular Ollama models are chat completion models.",
+                "language": "en",
+                "source": "https://python.langchain.com/v0.2/docs/integrations/llms/ollama/",
+                "title": "OllamaLLM | \ud83e\udd9c\ufe0f\ud83d\udd17 LangChain"
+            }
+        }
+    ]
+]
